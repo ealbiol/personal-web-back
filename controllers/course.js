@@ -2,9 +2,10 @@
 
 const Course = require("../models/course");
 const image = require("../utils/image")
+
 // ENDPOINTS
 
-//Endpoint create course
+//Endpoint create/POST course
 async function createCourse(req, res) {
     const course = new Course(req.body) // In req.body we receive the data of the user's new course
 

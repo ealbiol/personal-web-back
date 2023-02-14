@@ -23,5 +23,7 @@ api.patch(
 );
 // Endpoint to Delete/DELETE post:
 api.delete("/post/:id", [md_auth.assureAuth], PostController.deletePost);
-api.get("/post/:path", PostController.getPost) // get post by path/route
+// get post by path/route
+api.get("/post/:path", PostController.getPost)
+
 module.exports = api;
