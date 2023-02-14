@@ -3,7 +3,7 @@ const multiparty = require("connect-multiparty"); //Middleware to accept multipa
 const UserController = require("../controllers/user");
 const md_auth = require("../middlewares/authenticate");
 
-const md_upload = multiparty({ uploadDir: "./uploads/avatar" })
+const md_upload = multiparty({ uploadDir: "./uploads/avatar" }); //Folder where miniatures images will be placed.
 const api = express.Router();
 
 // Get logged in user:

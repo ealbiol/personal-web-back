@@ -12,9 +12,11 @@ const { API_VERSION } = require("./constants");
 //Initiating Express:
 const app = express();
 
-// Import routings
-const authRoutes = require("./router/auth")
-const userRoutes = require("./router/user")
+// Import routings: Auth, User, Menu, Course
+const authRoutes = require("./router/auth");
+const userRoutes = require("./router/user");
+const menuRoutes = require("./router/menu");
+const courseRoutes = require("./router/course");
 
 //Configure Body Parser: to parse client data arriving to the server:
 app.use(bodyParser.urlencoded({extended: true}));
@@ -26,9 +28,12 @@ app.use(express.static("uploads"));
 // Configure Header HTTP - CORS: So that when doing client HTTP petitions the server won't block them
 app.use(cors());
 
-// Configure routings
+// Configure routings auth, user, menu, course.
 app.use(`/api/${API_VERSION}`, authRoutes);
 app.use(`/api/${API_VERSION}`, userRoutes)
+app.use(`/api/${API_VERSION}`, menuRoutes)
+app.use(`/api/${API_VERSION}`, courseRoutes)
+
 
 module.exports = app;
 
