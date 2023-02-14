@@ -2,7 +2,7 @@
 
 const Menu = require("../models/menu"); //Importing Mongoose Menu Shcema.
 
-//Endpoint create menu
+//Endpoint create/POST menu
 async function createMenu(req, res) {
     const menu = new Menu(req.body) // In req.body we receive the data of the user's new menu
 
@@ -16,7 +16,7 @@ async function createMenu(req, res) {
 }
 
 
-//Endpoints to receive all menus:
+//Endpoints to receive/GET all menus:
 async function getMenus(req, res) {
     const { active } = req.query; //Receiving only active menus.
     let response = null
@@ -35,7 +35,7 @@ async function getMenus(req, res) {
 };
 
 
-//Endpoint to update menu
+//Endpoint to update/PTCH menu
 async function updateMenu(req, res) {
     const { id } = req.params; // Params defined in the route. In this case the id.
     const menuData = req.body;
@@ -51,7 +51,7 @@ async function updateMenu(req, res) {
 }
 
 
-//Endpoint to delete menu
+//Endpoint to delete/DELETE menu
 async function deleteMenu(req, res) {
     const { id } = req.params;
 

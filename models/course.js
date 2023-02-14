@@ -1,6 +1,7 @@
 // WEBSITE DYNAMIC COURSE SCHEMA MODEL
 
 const mongoose = require("mongoose");
+const mongoosePaginate = require("mongoose-paginate"); //Pagination dependency
 
 const CourseSchema = mongoose.Schema({
     title: String,
@@ -10,5 +11,7 @@ const CourseSchema = mongoose.Schema({
     price: Number,
     score: Number,
 });
+
+CourseSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model("Course", CourseSchema);

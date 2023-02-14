@@ -20,7 +20,27 @@ async function createCourse(req, res) {
     });
 }
 
+
+//Endpoints to receive/GET all courses:
+function getCourses(req, res) {
+const{page = 1, limit = 10} = req.query; //Values by default if any given by user.
+    const options = {
+        page: parseInt(page),
+        limit: parseInt(limit) //limit of elements per page
+    };
+
+    Course.paginate({}, options, (error, courses) => {
+        if (error) {
+            res.status(400).send({ msg: "Error when getting courses" })
+        } else {
+            res.status(200).send(courses)
+        }
+    })
+
+};
+
 module.exports = {
     createCourse,
+    getCourses,
 };
 

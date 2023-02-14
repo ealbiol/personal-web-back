@@ -10,7 +10,9 @@ const api = express.Router();
 
 //ENDPOINTS
 
-// Create new user:
+// Create/POST new course:
 api.post("/course", [md_auth.assureAuth, md_upload], CourseController.createCourse);
+// Endpoint to Get/GET all courses:
+api.get("/course", CourseController.getCourses); //No middleware needed since it must be accessible for everyone.
 
 module.exports = api;
