@@ -37,7 +37,7 @@ async function getMenus(req, res) {
 
 //Endpoint to update/PTCH menu
 async function updateMenu(req, res) {
-    const { id } = req.params; // Params defined in the route. In this case the id.
+    const { id } = req.params; // Params defined in the route. In this case the id. The id of the menu we want to update.
     const menuData = req.body;
 
     //Finding menu to update
@@ -75,4 +75,4 @@ module.exports = {
 
 
 // Menu (endpoint) Structure:
-// 1. Model 2.App 3.Controller, 4.Router
+// 1. Model 2.Controller 3.Router, 4.App

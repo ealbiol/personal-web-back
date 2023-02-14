@@ -14,5 +14,13 @@ const api = express.Router();
 api.post("/course", [md_auth.assureAuth, md_upload], CourseController.createCourse);
 // Endpoint to Get/GET all courses:
 api.get("/course", CourseController.getCourses); //No middleware needed since it must be accessible for everyone.
+// Endpoint to update/PTCH a course
+api.patch(
+    "/course/:id",
+    [md_auth.assureAuth, md_upload],
+    CourseController.updateCourse
+);
+// Endpoint to Delete/DELETE course:
+api.delete("/course/:id", [md_auth.assureAuth], CourseController.deleteCourse);
 
 module.exports = api;

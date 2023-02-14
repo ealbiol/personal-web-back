@@ -39,8 +39,46 @@ const{page = 1, limit = 10} = req.query; //Values by default if any given by use
 
 };
 
+
+//Endpoint to update/PTCH course
+async function updateCourse(req, res) {
+    const { id } = req.params; // Params defined in the route. In this case the id.
+    const courseData = req.body;
+
+    if (req.files.miniature) {
+        const imagePath = image.getFilePath(req.files.miniature);
+        courseData.miniature = imagePath;
+    }
+
+    //Finding course to update
+    Course.findByIdAndUpdate({ _id: id }, courseData, (error) => {
+        if (error) {
+            res.status(400).send({ msg: "Error when updating course" })
+        } else {
+            res.status(200).send({ msg: "Updating course successful" })
+        }
+    })
+}
+
+
+//Endpoint to delete/DELETE course
+async function deleteCourse(req, res) {
+    const { id } = req.params;
+
+    Course.findByIdAndDelete(id, (error) => {
+        if (error) {
+            res.status(400).send({ msg: "Error when deleting course" })
+        } else {
+            res.status(200).send({ msg: "course eliminated" })
+        }
+    });
+}
+
+
 module.exports = {
     createCourse,
     getCourses,
+    updateCourse,
+    deleteCourse,
 };
 
