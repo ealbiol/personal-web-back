@@ -12,6 +12,7 @@ function createAccessToken(user) {
     // Data inside token:
     const payload = {
         token_type: "access",
+        //user_id: null,
         user_id: user.id,
         iat: Date.now(),
         exp: expToken.getTime(),
