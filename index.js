@@ -17,7 +17,7 @@ const {
 
 
 //Definning port where HTTP server will be raised:
-const PORT = process.env.POST || 3977;
+const PORT = process.env.PORT || 3977;
 
 //Connection do database and raising port:
 mongoose.connect(
